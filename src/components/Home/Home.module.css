@@ -1,0 +1,22 @@
+.home {
+    border-bottom: 1px solid black;
+    justify-content: space-between
+
+}
+/* .home h3
+{
+  
+    float: left;
+    
+} */
+ .home p{
+ text-align: right;
+ font-style: italic;
+
+} 
+.home button{
+    background: transparent;
+    font-style: italic;
+   color: blue;
+   border: none;
+}

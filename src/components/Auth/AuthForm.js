@@ -1,15 +1,15 @@
 import classes from './AuthForm.module.css';
-import { useState,useRef, Fragment } from 'react';
-import {useHistory, Redirect} from 'react-router-dom'
+import { useState,useRef, Fragment, useContext } from 'react';
+import {useHistory, Redirect} from 'react-router-dom';
+import AuthContext from '../../store/auth-context';
 
 const AuthForm = props => {
 
-   
+   const authCtx = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
  
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
-    const confirmPasswordInputRef = useRef();
     const history =  useHistory()
   
   
@@ -45,7 +45,7 @@ const AuthForm = props => {
           setIsLoading(false)
           if(res.ok) {
             res.json().then(data => {
-                console.log(data.idToken)
+                authCtx.onLogin(data)
               history.replace('/home')
             });
           } else {
