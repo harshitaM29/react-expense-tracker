@@ -1,12 +1,20 @@
 import AuthPage from "./pages/AuthPage";
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import AuthForm from "./components/Auth/AuthForm";
+import HomePage from "./pages/HomePage";
+import { Fragment } from "react";
 
 function App() {
   return(
-  <Route path='/' >
+    <Switch>
+  <Route path='/' exact>
     <AuthPage />
   </Route>
+  <Route path='/home'>
+    <HomePage />
+  </Route>
+  </Switch>
+ 
   );
 }
 
