@@ -9,12 +9,18 @@ const AuthContextProvider = props => {
         setToken(data.idToken);
         localStorage.setItem("token",data.idToken)
     }
+    const logoutHandler = () => {
+        setToken(null);
+        localStorage.removeItem("token")
+       
+     
+    }
 
     const cartContext = {
         tokenId: tokenId,
         isLoggedIn:isUserLoggedIn,
         onLogin:loginHandler,
-        onLogout:() => {}
+        onLogout:logoutHandler
     }
 
     return (

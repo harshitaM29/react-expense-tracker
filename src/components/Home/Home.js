@@ -1,10 +1,12 @@
 import classes from './Home.module.css';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
 import AuthContext from '../../store/auth-context';
 import { useContext } from 'react';
 
+
+
 const Home = () => {
-    
+    const history = useHistory()
     const authCtx = useContext(AuthContext)
     const verifyEmailHandler = (e) => {
         e.preventDefault();
@@ -28,11 +30,19 @@ const Home = () => {
             }
         })
     }
+
+    const logoutHandler = () => {
+        authCtx.onLogout();
+        history.replace('/')
+
+    }
     return (
         <div className={classes.home}>
         <h3>Welcome to Expense Tracker</h3>
         <p>Your profile is incomplete.<NavLink to="/profile" style={{textDecoration: 'none'}}>Complete Now</NavLink></p>
-        <div  className={classes.action}><button onClick={verifyEmailHandler}>Verify Your Email</button></div> 
+        <div  className={classes.action}><button onClick={verifyEmailHandler}>Verify Your Email</button>
+        <button onClick={logoutHandler}>Logout</button></div> 
+        
         </div>
     )
 }
