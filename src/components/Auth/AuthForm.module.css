@@ -37,7 +37,24 @@
     text-align: left;
     padding: 0.25rem;
   }
-  
+  .forget {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .forget button {
+    background-color: transparent;
+    border: none;
+    color:teal;
+    padding: 0.15rem 0.1rem;
+    cursor: pointer;
+  }
+  .forget button:hover {
+    background-color: transparent;
+    color: rgb(2, 43, 43);
+
+  }
   .actions {
     margin-top: 1.5rem;
     display: flex;
@@ -70,5 +87,5 @@
   
   .actions .toggle:hover {
     background-color: transparent;
-    color: #ae82cc;
+    color: rgb(2, 43, 43);
   }

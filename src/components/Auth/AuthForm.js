@@ -76,7 +76,9 @@ const AuthForm = props => {
               required
             />
           </div>
-     
+          <div className={classes.forget}>
+            <button>Forget Password?</button>
+          </div>
           <div className={classes.actions}>
             {isLoading && <p>Sending Request...</p>}
             {!isLoading && <button>Login</button> }
