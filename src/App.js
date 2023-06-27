@@ -7,6 +7,8 @@ import SignUpPage from "./pages/SignUpPage";
 import ProfilePage from './pages/ProfilePage';
 import ForgetPassPage from './pages/ForgetPassPage';
 import ExpenseContextProvider from "./store/ExpenseContextProvider";
+import EditExpense from "./components/Expenses/EditExpense";
+import EditPage from "./pages/EditPage";
 
 
 function App() {
@@ -28,6 +30,9 @@ function App() {
   </Route>
   <Route path='/forget'>
   <ForgetPassPage />
+  </Route>
+  <Route path='/edit'>
+    <EditPage />
   </Route>
   </ExpenseContextProvider>
   </Switch>

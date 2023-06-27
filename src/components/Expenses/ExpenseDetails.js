@@ -1,16 +1,19 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import classes from './ExpenseItem.module.css';
 import EditExpense from './EditExpense';
-import {useHistory} from 'react-router-dom'
+import {useHistory, Route, BrowserRouter, Switch,Link } from 'react-router-dom';
+import EditPage from '../../pages/EditPage';
+
 
 const ExpenseDetails = (props) => {
-
+    const [isShown, setIsShown] = useState(false);
     const history = useHistory()
     const redirectToEdit = () => {
-       history.replace('/edit')
+        setIsShown(current => !current);
     }
     return (
-    <Fragment>
+  
+   <Fragment>
         <div className={classes.description}>
        <h2>{props.title}</h2>
             <h2>{props.des}</h2>
@@ -19,10 +22,16 @@ const ExpenseDetails = (props) => {
        
         </div>
         <div className={classes.action}>
+            {/* <Route path='/edit'>
+                <EditPage />
+            </Route> */}
             <button onClick={props.onRemove}>Delete</button>
-            <button onClick={redirectToEdit}>Edit</button>
-            </div>
-         </Fragment>
+           <button onClick={redirectToEdit}>Edit</button>
+          {isShown && <EditExpense items={props} />}
+            </div> 
+
+            </Fragment>
+      
     )
 };
 

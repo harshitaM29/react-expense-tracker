@@ -52,11 +52,30 @@ const ExpenseContextProvider = props => {
 
        
     }
+    const editExpenseHandler =(item) => {
+
+        const key = Object.keys(expense).find(key => expense[key].id === item.id)
+        console.log(item)
+        fetch(`https://react-expense-tracker-40f44-default-rtdb.firebaseio.com/expense${email}/${key}.json?print=pretty`,{
+            method:'PUT',
+            body:JSON.stringify(item),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        .then(res => {
+            if(res.ok) {
+                console.log("expenses edited successfully");
+                window.location.reload()
+            }
+        })
+    }
 
     const expenseContext = {
         expense:expense,
         addExpenses:addExpenseHandler,
-        deleteExpense:deleteExpenseHandler
+        deleteExpense:deleteExpenseHandler,
+        editExpense:editExpenseHandler
             
     }
 

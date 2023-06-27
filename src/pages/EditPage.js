@@ -1,8 +1,7 @@
 import EditExpense from "../components/Expenses/EditExpense";
-import ExpenseForm from "../components/NewExpenses/ExpenseForm";
 
 const EditPage = () => {
-    return <ExpenseForm />
+    return <EditExpense />
 }
 
 export default EditPage;
