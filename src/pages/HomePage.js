@@ -9,12 +9,12 @@ const HomePage = () => {
     const addExpenseHandler = expense => {
         expenseContext.addExpenses(expense);
     }
-    const expenses = expenseContext.expense
+    const expenses = expenseContext.expense;
     return (
     <Fragment>
     <Home />
     <NewExpenses onAddExpense={addExpenseHandler}/>
-    <ExpenseList  items={expenses}/>
+    <ExpenseList items={expenses} />
     </Fragment>
     )
 }
