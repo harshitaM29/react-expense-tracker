@@ -6,17 +6,17 @@ const ExpenseContextProvider = props => {
     const email = authCtx.isLoggedIn ? authCtx.emailId.split('@')[0] : '';
     const [expense,setExpense] = useState([]);
     const [receivedExpenses,setReceivedExpenses] = useState([]);
+
+  
     const addExpenseHandler = (expense) => {
         setExpense(preExpenses => {
-            return [expense,...preExpenses]
+            
+            return [expense,...Object.values(preExpenses)]
           })
 
               fetch(`https://react-expense-tracker-40f44-default-rtdb.firebaseio.com/expense${email}.json`,{
                 method:'POST',
-                body:JSON.stringify({
-                    ...expense,
-                    email:email
-                }),
+                body:JSON.stringify(expense),
                 headers: {
                     'Content-Type':'application.json'
                 }
@@ -29,7 +29,7 @@ const ExpenseContextProvider = props => {
     const fetchData = useCallback(() => {
         fetch(`https://react-expense-tracker-40f44-default-rtdb.firebaseio.com/expense${email}.json?print=pretty`,)
         .then(res => res.json())
-        .then(data => setExpense(Object.values(data)))
+        .then(data => setExpense(data))
 
     },[]);
 
@@ -37,15 +37,30 @@ const ExpenseContextProvider = props => {
         fetchData();
     },[fetchData])
 
+   
 
+    const deleteExpenseHandler = (id) => {
+       const key = Object.keys(expense).find(key => expense[key].id === id)
+        fetch(`https://react-expense-tracker-40f44-default-rtdb.firebaseio.com/expense${email}/${key}.json?print=pretty`,{
+            method:'DELETE'
+        })
+        .then(res => {
+            if(res.ok) {
+                console.log("expenses deleted successfully")
+            }
+        })
+
+       
+    }
 
     const expenseContext = {
         expense:expense,
-        addExpenses:addExpenseHandler
+        addExpenses:addExpenseHandler,
+        deleteExpense:deleteExpenseHandler
             
     }
 
-    console.log(expense)
+
     return (
 
         

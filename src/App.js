@@ -22,13 +22,14 @@ function App() {
   <Route path='/home'>
     <HomePage />
   </Route>
-  </ExpenseContextProvider>
+
   <Route path='/profile'>
   <ProfilePage />
   </Route>
   <Route path='/forget'>
   <ForgetPassPage />
   </Route>
+  </ExpenseContextProvider>
   </Switch>
  
   );

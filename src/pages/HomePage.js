@@ -9,7 +9,10 @@ const HomePage = () => {
     const addExpenseHandler = expense => {
         expenseContext.addExpenses(expense);
     }
-    const expenses = expenseContext.expense;
+    let expenses = []
+    if(expenseContext.expense !== null){
+        expenses = expenseContext.expense;
+    }
     return (
     <Fragment>
     <Home />

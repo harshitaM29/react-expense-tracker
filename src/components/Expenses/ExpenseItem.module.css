@@ -33,12 +33,26 @@
     text-align: right;
    
   }
-
-  .cat {
-    margin-left: 10rem;
-    display: flex;
-    flex-direction: column;
-  }
+.action {
+  text-align: right;
+}
+.action button {
+  font: inherit;
+  cursor: pointer;
+    margin-right: 1rem;
+   background-color: teal;
+   border:1px solid teal;
+    border-radius: 20px;
+    color: white;
+    padding: 0.25rem 1rem;
+    font-weight: bold;
+}
+.action button:hover,
+.action button:active {
+  background-color: rgb(5, 72, 72);
+  border-color: rgb(5, 72, 72);
+  ;
+}
   
   @media (min-width: 580px) {
     .description {

@@ -51,6 +51,7 @@ const ExpenseForm = (props) => {
            <div className={classes.control}>
                <label>Expense Category</label><br />
                <select id="category" name="category" value={enteredDes} onChange={updateDes}>
+                <option>Select Category</option>
              <option value="Fuel">Fuel</option>
              <option value="Food">Food</option>
              <option value="Electricity">Electricity</option>
