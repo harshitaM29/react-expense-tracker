@@ -4,7 +4,10 @@ import AuthForm from "./components/Auth/AuthForm";
 import HomePage from "./pages/HomePage";
 import { Fragment } from "react";
 import SignUpPage from "./pages/SignUpPage";
-import ProfilePage from './pages/ProfilePage'
+import ProfilePage from './pages/ProfilePage';
+import ForgetPassPage from './pages/ForgetPassPage';
+
+
 function App() {
   return(
     <Switch>
@@ -19,6 +22,9 @@ function App() {
   </Route>
   <Route path='/profile'>
   <ProfilePage />
+  </Route>
+  <Route path='/forget'>
+  <ForgetPassPage />
   </Route>
   </Switch>
  

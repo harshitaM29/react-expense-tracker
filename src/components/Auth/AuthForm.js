@@ -20,7 +20,9 @@ const AuthForm = props => {
   
     
     };
-  
+    const forgetPassword = () => {
+      history.push('/forget')
+    }
 
     const signInHandler = (e) => {
         const enteredEmail = emailInputRef.current.value;
@@ -77,7 +79,7 @@ const AuthForm = props => {
             />
           </div>
           <div className={classes.forget}>
-            <button>Forget Password?</button>
+            <button onClick={forgetPassword}>Forget Password?</button>
           </div>
           <div className={classes.actions}>
             {isLoading && <p>Sending Request...</p>}

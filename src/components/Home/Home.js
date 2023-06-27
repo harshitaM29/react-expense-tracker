@@ -39,8 +39,10 @@ const Home = () => {
     return (
         <div className={classes.home}>
         <h3>Welcome to Expense Tracker</h3>
-        <p>Your profile is incomplete.<NavLink to="/profile" style={{textDecoration: 'none'}}>Complete Now</NavLink></p>
-        <div  className={classes.action}><button onClick={verifyEmailHandler}>Verify Your Email</button>
+        
+        <div  className={classes.action}>
+        <button><NavLink to="/profile" style={{textDecoration: 'none', color:'white'}}>Profile</NavLink></button>
+        <button onClick={verifyEmailHandler}>Verify Your Email</button>
         <button onClick={logoutHandler}>Logout</button></div> 
         
         </div>

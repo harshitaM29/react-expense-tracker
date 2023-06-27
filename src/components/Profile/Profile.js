@@ -38,7 +38,7 @@ const Profile = () => {
           })
         }
       })
-    })
+    }, [])
     const submitHandler = (e) => {
         e.preventDefault();
         const enteredName = nameInputRef.current.value;
@@ -76,7 +76,7 @@ const Profile = () => {
         <div className={classes.profile}>
         <h3>Complete Your Profile</h3>
         <div>
-          <p>Your Profile is {percent}% completed</p>
+        {percent === 100 ? <p>Your Profile is {percent}% completed</p> : <p>Your Profile is {percent}% completed.Complete now</p>} 
         </div>
         </div>
 
