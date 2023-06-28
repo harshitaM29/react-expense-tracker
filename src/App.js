@@ -20,7 +20,7 @@ function App() {
   <Route path='/signup' >
     <SignUpPage />
   </Route>
-  <ExpenseContextProvider>
+
   <Route path='/home'>
     <HomePage />
   </Route>
@@ -34,7 +34,7 @@ function App() {
   <Route path='/edit'>
     <EditPage />
   </Route>
-  </ExpenseContextProvider>
+ 
   </Switch>
  
   );

@@ -1,20 +1,22 @@
 import classes from './Home.module.css';
 import {NavLink, useHistory} from 'react-router-dom';
-import AuthContext from '../../store/auth-context';
-import { useContext } from 'react';
+import {authActions} from '../../store/auth';
+import {useDispatch, useSelector} from 'react-redux'
 
 
 
 const Home = () => {
-    const history = useHistory()
-    const authCtx = useContext(AuthContext)
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.auth.tokenId);
+    
     const verifyEmailHandler = (e) => {
         e.preventDefault();
         fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBJVhLyraZIaOHKuIYAEHRRqOQ1pCR7qsw' ,{
             method:'POST',
             body :JSON.stringify({
                 requestType:"VERIFY_EMAIL",
-                idToken:authCtx.tokenId
+                idToken:token
 
             }),
             headers:{
@@ -32,9 +34,9 @@ const Home = () => {
     }
 
     const logoutHandler = () => {
-        authCtx.onLogout();
+        
         history.replace('/')
-
+        dispatch(authActions.logout());
     }
     return (
         <div className={classes.home}>

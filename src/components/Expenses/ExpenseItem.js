@@ -1,13 +1,16 @@
 import classes from './ExpenseItem.module.css';
 import ExpenseDetails from './ExpenseDetails';
-import ExpenseContext from '../../store/expense-context';
 import { useContext } from 'react';
+import {expenseActions} from '../../store/expense';
+import {useDispatch} from 'react-redux'
 
 const ExpenseItem = props => {
-    const expenseCart = useContext(ExpenseContext)
+  
+    const dispatch = useDispatch()
     const removeExpenses = (id) => {
-        expenseCart.deleteExpense(id);
+       dispatch(expenseActions.deleteExpense(id))
     }
+
 
     const editExpenseHandler = (item) => {
         

@@ -1,11 +1,13 @@
 import classes from './AuthForm.module.css';
 import { useState,useRef, Fragment, useContext } from 'react';
 import {useHistory, Redirect} from 'react-router-dom';
-import AuthContext from '../../store/auth-context';
+import { authActions } from '../../store/auth';
+import {useSelector, useDispatch} from 'react-redux'
+
 
 const AuthForm = props => {
 
-   const authCtx = useContext(AuthContext);
+    const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
  
     const emailInputRef = useRef();
@@ -47,7 +49,7 @@ const AuthForm = props => {
           setIsLoading(false)
           if(res.ok) {
             res.json().then(data => {
-                authCtx.onLogin(data)
+                dispatch(authActions.login(data))
               history.replace('/home')
             });
           } else {

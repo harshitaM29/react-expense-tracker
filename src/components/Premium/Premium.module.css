@@ -1,0 +1,26 @@
+.premium{
+    padding: 0.5rem;
+    margin: 1rem auto;
+    width: 20rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: center;
+
+}
+
+.premium button{
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid teal;
+    background-color: teal;
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+}
+
+.premium button:hover,
+ .expense button:active{
+    background-color:rgb(1, 37, 37);
+    border-color: rgb(1, 37, 37);
+}

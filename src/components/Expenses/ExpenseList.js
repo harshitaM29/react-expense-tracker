@@ -5,7 +5,7 @@ import Card from '../UI/Card';
 
 const ExpenseList = props => {
     let data = Object.values(props.items);
-//    console.log(data.map(key => key.id))
+//    console.log(data)
     
     return(
     <Card className={classes.list}>

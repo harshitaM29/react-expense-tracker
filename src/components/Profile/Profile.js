@@ -1,20 +1,19 @@
 import { Fragment, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import classes from './Profile.module.css';
-import AuthContext from '../../store/auth-context';
+
 
 const Profile = () => {
 
     const [percent,setPercent] = useState(64)
-    const authCtx = useContext(AuthContext);
     const nameInputRef = useRef();
     const photoURLRef = useRef();
-    
+    const token = localStorage.getItem("token")
 
     const getData = useCallback(() => {
       fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBJVhLyraZIaOHKuIYAEHRRqOQ1pCR7qsw', {
         method: 'POST',
         body:JSON.stringify({
-          idToken:authCtx.tokenId
+          idToken:token
         }),
         headers: {
           'Content-Type': 'application/json'
@@ -47,7 +46,7 @@ const Profile = () => {
         fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyBJVhLyraZIaOHKuIYAEHRRqOQ1pCR7qsw', {
             method:'POST',
             body:JSON.stringify({
-                idToken:authCtx.tokenId,
+                idToken:token,
                 displayName:enteredName,
                 photoUrl:enteredPhotoURL,
                 returnSecureToken:false,

@@ -1,13 +1,12 @@
 import { Fragment, useState } from 'react';
 import classes from './ExpenseItem.module.css';
 import EditExpense from './EditExpense';
-import {useHistory, Route, BrowserRouter, Switch,Link } from 'react-router-dom';
-import EditPage from '../../pages/EditPage';
+
 
 
 const ExpenseDetails = (props) => {
     const [isShown, setIsShown] = useState(false);
-    const history = useHistory()
+    
     const redirectToEdit = () => {
         setIsShown(current => !current);
     }

@@ -5,13 +5,16 @@ import App from './App';
 import './index.css';
 import {BrowserRouter} from 'react-router-dom';
 import AuthContextProvider from './store/AuthContextProvider';
+import {Provider} from 'react-redux';
+import store from './store/index';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  <React.StrictMode>
   <BrowserRouter>
-  <AuthContextProvider>
+  <Provider store={store}>
     <App />
-    </AuthContextProvider>
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
