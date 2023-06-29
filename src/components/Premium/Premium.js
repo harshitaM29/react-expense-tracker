@@ -30,7 +30,6 @@ const Premium = (props) => {
         const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
         const data = new Blob([excelBuffer], { type: fileType });
         FileSaver.saveAs(data, "Expenses" + fileExtension);
-        console.log('download started');
 
     }
     const isClicked = useSelector(state => state.theme.isClicked)

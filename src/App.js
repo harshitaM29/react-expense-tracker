@@ -6,13 +6,30 @@ import SignUpPage from "./pages/SignUpPage";
 import ProfilePage from './pages/ProfilePage';
 import ForgetPassPage from './pages/ForgetPassPage';
 import EditPage from "./pages/EditPage";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { sendExpenseItems, fetchExpenseData } from "./store/expense-actions";
 
-
-
+let isInitial = true;
 function App() {
   const isDarkMode = useSelector(state => state.theme.isClicked)
   const isLogin = useSelector(state => state.auth.isLoggedIn)
+  const expense = useSelector(state => state.expense)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchExpenseData())
+  },[dispatch])
+
+  useEffect(() => {
+    if(isInitial) {
+      isInitial = false;
+      return;
+    }
+    if(expense.changed) {
+      dispatch(sendExpenseItems(expense));
+    }
+  }, [expense,dispatch])
+
  
    useEffect(() => {
     if(isLogin) {
@@ -20,7 +37,7 @@ function App() {
     } else {
       document.body.style.backgroundColor =  "#fff";
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, isLogin]);
 
   return(
     <Switch>

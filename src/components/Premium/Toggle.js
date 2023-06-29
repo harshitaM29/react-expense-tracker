@@ -5,12 +5,13 @@ import {useDispatch, useSelector} from 'react-redux'
 
 const Toggle = () => {
     const dispatch = useDispatch();
-    const isChange = useSelector(state => state.theme.isClicked)
+    const isChange = useSelector(state => state.theme.isChange)
     const themeChanger = () => {
      
         dispatch(themeActions.toggle())
       
     }
+    document.body.style.backgroundColor = isChange ? "#292c35" : "#fff";
 
     return (
         <div className={classes.darkmode}>

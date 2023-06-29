@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialThemeState = { isClicked: false,};
+const initialThemeState = { isClicked: false,isChange:false};
 
 const themeSlice = createSlice({
     name:'theme',
@@ -8,10 +8,11 @@ const themeSlice = createSlice({
     reducers: {
         buttonClicked(state) {
             state.isClicked = true;
+            state.isChange = true
         },
         toggle(state) {
             
-            state.isClicked = !state.isClicked;
+            state.isChange = !state.isChange;
             
         }
     }

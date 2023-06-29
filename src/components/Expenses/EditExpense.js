@@ -1,9 +1,8 @@
 import classes from './EditExpense.module.css';
-import { useContext, useState } from 'react';
+import {  useState } from 'react';
 import {expenseActions} from '../../store/expense';
 import {useDispatch} from 'react-redux'
 const EditExpense = props => {
-    const [isShown, setIsShown] = useState(true);
 
     const dispatch = useDispatch();
     const [enteredTitle, setEnteredTitle] = useState(props.items.title);
@@ -30,6 +29,7 @@ const EditExpense = props => {
             id:props.items.id
         }
         dispatch(expenseActions.editExpense(updatedExpense))
+        props.onClose();
        
 
     }

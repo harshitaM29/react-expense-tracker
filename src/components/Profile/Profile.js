@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import classes from './Profile.module.css';
 
 
@@ -26,12 +26,6 @@ const Profile = () => {
               setPercent(100)
             }
             
-           
-            // if(data.users.hasOwnProperty(displayName)){
-            //   setPercent(64)
-            // } else {
-            //   setPercent(100)
-            // }
             nameInputRef.current.value = data.users.map(item => item.displayName)
             photoURLRef.current.value = data.users.map(item => item.photoUrl)
           })

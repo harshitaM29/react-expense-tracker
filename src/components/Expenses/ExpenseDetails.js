@@ -10,6 +10,10 @@ const ExpenseDetails = (props) => {
     const redirectToEdit = () => {
         setIsShown(current => !current);
     }
+
+    const closeForm =() => {
+        setIsShown(false)
+    }
     return (
   
    <Fragment>
@@ -26,7 +30,7 @@ const ExpenseDetails = (props) => {
             </Route> */}
             <button onClick={props.onRemove}>Delete</button>
            <button onClick={redirectToEdit}>Edit</button>
-          {isShown && <EditExpense items={props} />}
+          {isShown && <EditExpense items={props} onClose={closeForm}/>}
             </div> 
 
             </Fragment>
