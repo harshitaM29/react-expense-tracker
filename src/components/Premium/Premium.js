@@ -12,11 +12,11 @@ const Premium = (props) => {
     let expenseData = [];
     let expense = Object.values(props.expenses)
     // console.log(expense)
-    expense.map(item => {
+    expense.map(item => (
         expenseData.push({'Expense Description':item.title,
     'Expense Catgory':item.des,
         'Expense Amount':item.amount})
-    })
+    ))
     const dispatch = useDispatch();
     
     const buttonHandler = () => {

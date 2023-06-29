@@ -31,7 +31,7 @@ const Profile = () => {
           })
         }
       })
-    }, [])
+    }, [token])
     const submitHandler = (e) => {
         e.preventDefault();
         const enteredName = nameInputRef.current.value;
@@ -50,7 +50,6 @@ const Profile = () => {
           if(res.ok) {
             res.json().then(data => {
               setPercent(100)
-             console.log(data)
             });
           } else {
             res.json().then(data => {
