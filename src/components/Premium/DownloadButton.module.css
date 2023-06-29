@@ -1,29 +1,14 @@
-.premium{
+.download{
     padding: 0.5rem;
-    margin: 1rem auto;
+    /* margin: 0.5rem auto; */
     width: 20rem;
     max-width: 95%;
     border-radius: 12px;
     text-align: center;
-    display: inline;
+    margin-right: 25%;
+    margin-top: 0.5rem;
 
-}
 
-.premium button{
-    font: inherit;
-    cursor: pointer;
-    padding: 1rem 2rem;
-    border: 1px solid teal;
-    background-color: teal;
-    color: white;
-    border-radius: 12px;
-    margin-right: 1rem;
-}
-
-.premium button:hover,
- .premium button:active{
-    background-color:rgb(1, 37, 37);
-    border-color: rgb(1, 37, 37);
 }
 
 .download button{
@@ -34,7 +19,7 @@
     background-color: teal;
     color: white;
     border-radius: 12px;
-    /* margin-right: 1rem; */
+    margin-right: 1rem;
 }
 
 .download button:hover,
