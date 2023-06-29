@@ -6,7 +6,6 @@ import { expenseActions } from '../store/expense';
 import Premium from "../components/Premium/Premium";
 import {useDispatch, useSelector} from 'react-redux';
 import Toggle from "../components/Premium/Toggle";
-import DownloadButton from "../components/Premium/DownloadButton";
 
 const HomePage = () => {
  
@@ -14,7 +13,6 @@ const HomePage = () => {
     const email = localStorage.getItem("email");
     const isLogin = useSelector(state => state.auth.isLoggedIn)
    const emailId = isLogin ? email.split('@')[0] : '';
-   const isPremiumActive = useSelector(state => state.theme.isClicked)
     const receivedExpenses = useSelector(state => state.expense.expense)
 const fetchData = useCallback(() => {
     fetch(`https://react-expense-tracker-40f44-default-rtdb.firebaseio.com/expense${emailId}.json?print=pretty`,)
@@ -41,7 +39,7 @@ const fetchData = useCallback(() => {
     <Home />
     <Toggle />
     <NewExpenses onAddExpense={addExpenseHandler}/>
-    {totalAmount > 10000 && <Premium expenses={expenses}/>}
+    {totalAmount > 10000 && <Premium expenses={expenses} amount={totalAmount}/>}
     {/* {isPremiumActive && <DownloadButton />} */}
     <ExpenseList items={(receivedExpenses !== null) ? receivedExpenses : ''} />
     </Fragment>

@@ -7,7 +7,9 @@ const Toggle = () => {
     const dispatch = useDispatch();
     const isChange = useSelector(state => state.theme.isClicked)
     const themeChanger = () => {
+     
         dispatch(themeActions.toggle())
+      
     }
 
     return (

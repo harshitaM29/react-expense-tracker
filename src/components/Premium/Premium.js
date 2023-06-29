@@ -1,12 +1,22 @@
 import classes from './Premium.module.css';
 import {themeActions} from '../../store/theme';
 import { useDispatch, useSelector } from 'react-redux';
-import { EXCEL_FILE_BASE64 } from '../../constants';
 import FileSaver from 'file-saver';
+import * as XLSX from "xlsx";
 
 
 const Premium = (props) => {
-    console.log(props)
+    const fileType =
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+  const fileExtension = ".xlsx";
+    let expenseData = [];
+    let expense = Object.values(props.expenses)
+    // console.log(expense)
+    expense.map(item => {
+        expenseData.push({'Expense Description':item.title,
+    'Expense Catgory':item.des,
+        'Expense Amount':item.amount})
+    })
     const dispatch = useDispatch();
     
     const buttonHandler = () => {
@@ -14,24 +24,12 @@ const Premium = (props) => {
 
     }
     const handleDownload = () => {
-        let data = EXCEL_FILE_BASE64;
-        let slicesize = 1024;
-        let byteCharacter = atob(data);
-        let bytesLength = byteCharacter.length;
-        let sliceCount = Math.ceil(bytesLength / slicesize);
-        let byteArrays = new Array(sliceCount);
-        for(let sliceIndex = 0; sliceIndex < sliceCount; ++sliceIndex){
-            let begin = sliceIndex * slicesize;
-            let end = Math.min(begin + slicesize, bytesLength);
-            let bytes = new Array(end - begin);
-            for(var offset = begin, i=0; offset < end; ++i, ++offset){
-                bytes[i] = byteCharacter[offset].charCodeAt(0);
-            }
-            byteArrays[sliceIndex] = new Uint8Array(bytes);
-
-        }
-        let blob = new Blob(byteArrays, {type: 'application/vnd.ms-excel'});
-        FileSaver.saveAs(new Blob([blob], {}), "expense.xlsx");
+       
+        const ws = XLSX.utils.json_to_sheet(expenseData);
+        const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+        const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+        const data = new Blob([excelBuffer], { type: fileType });
+        FileSaver.saveAs(data, "Expenses" + fileExtension);
         console.log('download started');
 
     }
@@ -39,7 +37,7 @@ const Premium = (props) => {
     return (
     <div style={{marginLeft:isClicked ? '35%' : '42%'}} className={classes.premium}>
        <span><button onClick={buttonHandler}>Activate Premium</button></span> 
-   <span>{isClicked && <button onClick={handleDownload}>Download File</button> }</span> 
+   <span>{(props.amount > 10000 && isClicked )&& <button onClick={handleDownload}>Download File</button> }</span> 
         </div>
     )
 };

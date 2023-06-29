@@ -6,16 +6,22 @@ import SignUpPage from "./pages/SignUpPage";
 import ProfilePage from './pages/ProfilePage';
 import ForgetPassPage from './pages/ForgetPassPage';
 import EditPage from "./pages/EditPage";
-import {themeActions} from './store/theme';
 import { useSelector } from 'react-redux';
+
 
 
 function App() {
   const isDarkMode = useSelector(state => state.theme.isClicked)
-
-  useEffect(() => {
+  const isLogin = useSelector(state => state.auth.isLoggedIn)
+ 
+   useEffect(() => {
+    if(isLogin) {
     document.body.style.backgroundColor = isDarkMode ? "#292c35" : "#fff";
+    } else {
+      document.body.style.backgroundColor =  "#fff";
+    }
   }, [isDarkMode]);
+
   return(
     <Switch>
   <Route path='/' exact>

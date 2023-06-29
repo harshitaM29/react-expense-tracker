@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialThemeState = { isClicked: false, };
+const initialThemeState = { isClicked: false,};
 
 const themeSlice = createSlice({
     name:'theme',
@@ -10,7 +10,9 @@ const themeSlice = createSlice({
             state.isClicked = true;
         },
         toggle(state) {
+            
             state.isClicked = !state.isClicked;
+            
         }
     }
 });
