@@ -41,7 +41,7 @@ const ExpenseForm = (props) => {
         <form onSubmit={addExpense}>
        <div className={classes.controls}>
            <div className={classes.control}>
-               <label>Expense Description</label><br />
+               <label htmlFor={'expenseDescriptio'}>Expense Description</label><br />
                <input type="text" id="title" value={enteredTitle} onChange={updateTitle}/>
            </div>
            <div className={classes.control}>

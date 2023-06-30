@@ -10,8 +10,7 @@ const Premium = (props) => {
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
   const fileExtension = ".xlsx";
     let expenseData = [];
-    let expense = Object.values(props.expenses)
-    // console.log(expense)
+    let expense = Object.values(props.expenses || []);
     expense.map(item => (
         expenseData.push({'Expense Description':item.title,
     'Expense Catgory':item.des,
@@ -34,10 +33,12 @@ const Premium = (props) => {
     }
     const isClicked = useSelector(state => state.theme.isClicked)
     return (
+      
     <div style={{marginLeft:isClicked ? '35%' : '42%'}} className={classes.premium}>
-       <span><button onClick={buttonHandler}>Activate Premium</button></span> 
+       <span><button onClick={buttonHandler}>Activate Premium</button></span>
    <span>{(props.amount > 10000 && isClicked )&& <button onClick={handleDownload}>Download File</button> }</span> 
         </div>
+      
     )
 };
 
