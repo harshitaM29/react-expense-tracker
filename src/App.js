@@ -1,5 +1,5 @@
 import AuthPage from "./pages/AuthPage";
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import HomePage from "./pages/HomePage";
 import { useEffect } from "react";
 import SignUpPage from "./pages/SignUpPage";
@@ -49,17 +49,20 @@ function App() {
   </Route>
 
   <Route path='/home'>
-    <HomePage />
+  {isLogin &&  <HomePage /> }
+  {!isLogin && <Redirect to='/' />}
   </Route>
 
   <Route path='/profile'>
-  <ProfilePage />
+  {isLogin && <ProfilePage /> }
+  {!isLogin && <Redirect to='/' />}
   </Route>
   <Route path='/forget'>
   <ForgetPassPage />
   </Route>
   <Route path='/edit'>
-    <EditPage />
+  {isLogin && <EditPage /> }
+  {!isLogin && <Redirect to='/' />}
   </Route>
  
   </Switch>
